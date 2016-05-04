@@ -14,9 +14,6 @@ MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 #install the namenode stuff
 RUN yum -y install hadoop-hdfs-namenode && rm -rf /var/cache/yum/*
 
-#copy hadoop conf files
-COPY ../_config/* /usr/lib/hadoop/etc/hadoop/
-
 #format the namenode
 RUN hdfs namenode -format
 
