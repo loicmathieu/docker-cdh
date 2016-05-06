@@ -31,8 +31,9 @@ docker run -d --net hadoop --net-alias yarnmaster \
 
 3. Then start a datanode, warning : the hostname of the datanode needs to be specified in order yarn RessourceManager to be able to communicate with it (use of the -h docker run option).
 ```
-docker run -d --net hadoop --net-alias datanode1 -h datanode1 --link namenode --link yarnmaster \
--p 50020:50020 -p 50075:50075 -p 8042:8042 loicmathieu/cloudera-cdh-datanode
+docker run -d --net hadoop --net-alias datanode1 -h datanode1 \
+--link namenode --link yarnmaster -p 50020:50020 -p 50075:50075 -p 8042:8042 \
+loicmathieu/cloudera-cdh-datanode
 ```
 
 4. Finally launch the edge node and connect to it
