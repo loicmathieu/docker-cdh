@@ -6,6 +6,8 @@ A container running Cloudera Hadoop CDH HDFS Datanode and Yarn NodeManager
 
 This container is derived from loicmathieu/cloudera-cdh and will setup an HDFS datanode and a Yarn NodeManager.
 
+A full example of how to use it with the other Hadoop component can be found in the edgenode documentation : https://hub.docker.com/r/loicmathieu/cloudera-cdh-edgenode/
+
 The datanode will expose it's  50020 and 50075 ports, to use it, you first need to start a namenode
 (using loicmathieu/cloudera-hdfs-namenode) and make sure the network stack is OK so that the namenode and datanode can communicate together. 
 
@@ -59,4 +61,4 @@ wordcount /hadoop-hdfs* /wordcount
 hadoop fs -ls /wordcount
 ```
 
-**For a more complex cluster setup including HDFS, Yarn/MaprReduce, Hive, Pig, ... see loicmathieu/cloudera-cdh-edgenode that put all this together**
+**For a more complex cluster setup including HDFS, Yarn/MaprReduce, Hive, Pig, Spark, ... see loicmathieu/cloudera-cdh-edgenode that put all this together**
