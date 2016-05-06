@@ -70,7 +70,7 @@ The container include test data and scripts to test the cluster, here is a small
  select * from cities where department = '82' limit 10;
  ```
 
-**Spark (local) : **
+**Spark (local) :**
 ```
 spark-shell
 val cities = sc.textFile("hdfs:///cities");
@@ -78,7 +78,7 @@ cities.count();
 exit;
 ```
 
-**Spark (yarn) : **
+**Spark (yarn) :**
 ```
 spark-shell --master yarn
 val cities = sc.textFile("hdfs:///cities");
@@ -86,6 +86,8 @@ cities.count();
 exit;
 ```
 
-** Sqoop2 :**  It's installed, use it with scoop2 from the shell
+**Sqoop2 :**  
+It's installed, use it with scoop2 from the shell
  
-** Flume :**  It's installed, use it with flume-ng from the shell
+**Flume :**  
+It's installed, use it with flume-ng from the shell
