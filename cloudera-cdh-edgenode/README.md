@@ -1,12 +1,13 @@
 # cloudera-cdh-edgenode
 
-A container installed with Cloudera CDH and aims to be a client for HDFS and Yarn/Mapreduce.
+A container installed with Cloudera Hadoop CDH and aims to be a client for HDFS and Yarn/Mapreduce.
 
 This container is linked to the other loicmathieu/cloudera-cdh-* containers and aims to be the edge node so the entry point to send files, launch scripts and jobs, etc. to the cluster.
 
-This container contains the following Hadoop client : hdfs, yarn, mapreduce v2, pig, hive, sqoop, flume.
+This container contains the following Hadoop client : hdfs, yarn, mapreduce v2, pig, hive, spark, sqoop, flume.
 
 **Some example of how to run it :**
+
 0. If not done already, pull all the needed images
 ```
 docker pull loicmathieu/cloudera-cdh-namenode
@@ -14,7 +15,8 @@ docker pull loicmathieu/cloudera-cdh-yarnmaster
 docker pull loicmathieu/cloudera-cdh-datanode
 docker pull loicmathieu/cloudera-cdh-edgenode
 ```
-1. First, setup a cluster
+
+1. First, setup a network for the cluster
 ```
 docker network create hadoop
 ```
@@ -23,7 +25,7 @@ docker network create hadoop
 ```
 docker run -d --net hadoop --net-alias namenode \
 -p 8020:8020 loicmathieu/cloudera-cdh-namenode
-docker run -d --net hadoop --net-alias yarnmaster --link datanode \
+docker run -d --net hadoop --net-alias yarnmaster \
 -p 8032:8032 -p 8088:8088 loicmathieu/cloudera-cdh-yarnmaster
 ```
 
@@ -66,6 +68,22 @@ The container include test data and scripts to test the cluster, here is a small
  select * from cities limit 10;
  select * from cities where department = '82' limit 10;
  ```
+
+**Spark (local) : **
+```
+spark-shell
+val cities = sc.textFile("hdfs:///cities");
+cities.count();
+exit;
+```
+
+**Spark (yarn) : **
+```
+spark-shell --master yarn
+val cities = sc.textFile("hdfs:///cities");
+cities.count();
+exit;
+```
 
 ** Sqoop2 :**  It's installed, use it with scoop2 from the shell
  
