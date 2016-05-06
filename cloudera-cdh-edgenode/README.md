@@ -7,6 +7,13 @@ This container is linked to the other loicmathieu/cloudera-cdh-* containers and 
 This container contains the following Hadoop client : hdfs, yarn, mapreduce v2, pig, hive, sqoop, flume.
 
 **Some example of how to run it :**
+0. If not done already, pull all the needed images
+```
+docker pull loicmathieu/cloudera-cdh-namenode
+docker pull loicmathieu/cloudera-cdh-yarnmaster
+docker pull loicmathieu/cloudera-cdh-datanode
+docker pull loicmathieu/cloudera-cdh-edgenode
+```
 1. First, setup a cluster
 ```
 docker network create hadoop
@@ -16,13 +23,13 @@ docker network create hadoop
 ```
 docker run -d --net hadoop --net-alias namenode \
 -p 8020:8020 loicmathieu/cloudera-cdh-namenode
-docker run -d --net hadoop --net-alias yarnmaster \
--p 8032:8032 -p 8088:8088 loicmathieu/cloudera-cdh-yarnm
+docker run -d --net hadoop --net-alias yarnmaster --link datanode \
+-p 8032:8032 -p 8088:8088 loicmathieu/cloudera-cdh-yarnmaster
 ```
 
-3. Then start a datanode
+3. Then start a datanode, warning : the hostname of the datanode needs to be specified in order yarn RessourceManager to be able to communicate with it (use of the -h docker run option).
 ```
-docker run -d --net hadoop --net-alias datanode1 --link namenode --link yarnmaster \
+docker run -d --net hadoop --net-alias datanode1 -h datanode1 --link namenode --link yarnmaster \
 -p 50020:50020 -p 50075:50075 -p 8042:8042 loicmathieu/cloudera-cdh-datanode
 ```
 
