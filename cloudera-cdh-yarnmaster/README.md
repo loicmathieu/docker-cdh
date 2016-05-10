@@ -5,6 +5,8 @@ A container running Cloudera CDH HDFS Namenode and SecondaryNamenode
 
 This container is derived from loicmathieu/cloudera-cdh and will setup a Yarn ResourceManager and a HDFS  MaprReduce 2 HistoryServer. To use it, you will need a Datanode that can be run with loicmathieu/cloudera-hdfs-datanode.
 
+A full example of how to use it with the other Hadoop component can be found in the edgenode documentation : https://hub.docker.com/r/loicmathieu/cloudera-cdh-edgenode/
+
 The ResourceManager will expose it's 8032 port, to use it, you will then need to start a Datanode and make sure the network stack is OK so that the ResourceManager and the Datanode can communicate together. 
 
 The History server will expose it's 8080 port.
@@ -32,8 +34,8 @@ docker run -d --net hadoop --net-alias yarnmaster \
 ```
 3. start the datanode :
 ```
-docker run -d --net hadoop --net-alias datanode1 --link yarnmaster \
--p 50020:50020 loicmathieu/cloudera-cdh-datanode
+docker run -d --net hadoop --net-alias datanode1 -h datanode1 --link yarnmaster \
+-p 50020:50020 -p 50075:50075 -p 8042:8042 loicmathieu/cloudera-cdh-datanode
 ```
 
 To test the installation, connect to the ResourceManager, check the logs and if everything is fine make some Yarn operation, for example : 
@@ -45,4 +47,4 @@ hadoop-yarn* /wordcount
 hadoop fs -ls /wordcount
 ```
 
-**For a more complex cluster setup including HDFS, Yarn/MaprReduce, Hive, Pig, ... see loicmathieu/cloudera-cdh-edgenode that put all this together**
+**For a more complex cluster setup including HDFS, Yarn/MaprReduce, Hive, Pig, Spark, ... see loicmathieu/cloudera-cdh-edgenode that put all this together**

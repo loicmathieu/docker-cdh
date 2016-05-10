@@ -1,15 +1,17 @@
 # cloudera-cdh-datanode
 
-A container running Cloudera CDH HDFS Datanode and Yarn NodeManager
+A container running Cloudera Hadoop CDH HDFS Datanode and Yarn NodeManager
 
 *Disclaimer : If you want a container shipped with all the Hadoop components in it, take a look at the cloudera/quickstart container. If you want to be able to run multiple container, each with a single hadoop role, use the loicmathieu.cloudera-cdh-<role> containers provided here*
 
 This container is derived from loicmathieu/cloudera-cdh and will setup an HDFS datanode and a Yarn NodeManager.
 
-The datanode will expose it's  50020 and 50075 ports, to use it, you first need to start a namenode
-(using loicmathieu/cloudera-hdfs-namenode) and make sure the netword stack is OK so that the namenode and datanode can communicate together. 
+A full example of how to use it with the other Hadoop component can be found in the edgenode documentation : https://hub.docker.com/r/loicmathieu/cloudera-cdh-edgenode/
 
-The nodemanager will expose it's 8042 port. If you want to use it, you also need to start a loicmathieu/cloudera-cdh-yarnmaster container.
+The datanode will expose it's  50020 and 50075 ports, to use it, you first need to start a namenode
+(using loicmathieu/cloudera-hdfs-namenode) and make sure the network stack is OK so that the namenode and datanode can communicate together. 
+
+The nodemanager will expose it's 8042 port. If you want to use it, you also need to start a loicmathieu/cloudera-cdh-yarnmaster container and you need to configure the hostname of your container (using the docker run -h option) because communication between the nodemanger and the ressourcemanager are based on the hostname.
 
 The container will use supervisor to start both the Datanode and the NodeManager.
 
@@ -18,7 +20,7 @@ The Datanode logs are in /var/log/hadoop-hdfs and the NodeManager logs are in /v
 **Running the container**
 ```
 docker pull loicmathieu/cloudera-cdh-datanode
-docker run -d -p 50020:50020 -p 50075:50075 -p 8042:8042 loicmathieu/cloudera-cdh-datanode
+docker run -d -p 50020:50020 -p 50075:50075 -p 8042:8042 -h datanode1 loicmathieu/cloudera-cdh-datanode
 ```
 
 **Running the cluster**
@@ -39,7 +41,7 @@ docker run -d --net hadoop --net-alias yarnmaster \
 ```
 4. start the datanode :
 ```
-docker run -d --net hadoop --net-alias datanode1 --link namenode --link yarnmaster \
+docker run -d --net hadoop --net-alias datanode1 -h datanode1 --link namenode --link yarnmaster \
 -p 50020:50020 -p 50075:50075 -p 8042:8042 loicmathieu/cloudera-cdh-datanode
 ```
 
@@ -59,4 +61,4 @@ wordcount /hadoop-hdfs* /wordcount
 hadoop fs -ls /wordcount
 ```
 
-**For a more complex cluster setup including HDFS, Yarn/MaprReduce, Hive, Pig, ... see loicmathieu/cloudera-cdh-edgenode that put all this together**
+**For a more complex cluster setup including HDFS, Yarn/MaprReduce, Hive, Pig, Spark, ... see loicmathieu/cloudera-cdh-edgenode that put all this together**

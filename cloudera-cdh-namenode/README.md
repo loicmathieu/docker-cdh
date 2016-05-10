@@ -5,6 +5,8 @@ A container running Cloudera CDH HDFS Namenode and SecondaryNamenode
 
 This container is derived from loicmathieu/cloudera-cdh and will setup an HDFS Namenode and a HDFS  SecondaryNamenode. To use it, you will need a Datanode that can be run with loicmathieu/cloudera-hdfs-datanode.
 
+A full example of how to use it with the other Hadoop component can be found in the edgenode documentation : https://hub.docker.com/r/loicmathieu/cloudera-cdh-edgenode/
+
 The Namenode will expose it's 8020 port, to use it, you will then need to start a Datanode and make sure the network stack is OK so that the Namenode and the Datanode can communicate together. 
 
 The container will use supervisor to start both the Namenode and the SecondaryNamenode.
@@ -41,4 +43,4 @@ hadoop fs -put /var/log/hadoop-hdfs/* /
 hadoop fs -ls /
 ```
 
-**For a more complex cluster setup including HDFS, Yarn/MaprReduce, Hive, Pig, ... see loicmathieu/cloudera-cdh-edgenode that put all this together**
+**For a more complex cluster setup including HDFS, Yarn/MaprReduce, Hive, Pig, Spark, ... see loicmathieu/cloudera-cdh-edgenode that put all this together**
