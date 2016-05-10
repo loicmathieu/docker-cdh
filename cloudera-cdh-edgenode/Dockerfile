@@ -13,3 +13,7 @@ RUN yum -y install pig hive flume-ng sqoop2 spark-worker && rm -rf /var/cache/yu
 
 #copy test data and script
 COPY cities.* /
+
+#copy flume conf and start scripts
+COPY flume/* /
+RUN chmod +x /start_flume.sh
