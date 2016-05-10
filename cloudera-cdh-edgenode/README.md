@@ -86,8 +86,22 @@ cities.count();
 exit;
 ```
 
-**Sqoop2 :**  
-It's installed, use it with scoop2 from the shell
- 
 **Flume :**  
-It's installed, use it with flume-ng from the shell
+There's an embeded flume tests that can be used with the loicmathieu/apache-httpd-flume container (https://hub.docker.com/r/loicmathieu/apache-httpd-flume). This container contains and apache httpd webserver and a flume agent that will tail the apache access log and send it to a flume collector edgenode:9000. You can see the configuration file /flume_httpd.conf
+
+On the edgenode, the flume conf is also in /flume_httpd.conf and there is a /start_flume.sh script that will launch an agent that will listen on port 9000 and write to hdfs://users/root/collector the data written to it.
+
+Here are the step to test it :
+```
+docker pull loicmathieu/apache-httpd-flume
+docker run -d --net hadoop --net-alias flume -p 80:80 loicmathieu/apache-httpd-flume
+docker run -ti --net hadoop --net-alias edgenode --link namenode --link yarnmaster loicmathieu/cloudera-cdh-edgenode bash
+start_flume.sh
+```
+Here, I forward the port 80 of the loicmathieu/apache-httpd-flume container to the port 80 of the host, accessing it via a browser will write lines to the apache httpd access logs that will be send to the flume agent of the edgenode and written to HDFS
+```
+hadoop fs -ls /user/root/collector
+```
+
+**Sqoop2 :**  
+It's installed, use it with scoop2 from the shell ...
