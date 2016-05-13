@@ -1,0 +1,1 @@
+nohup flume-ng agent --conf conf --conf-file flume_httpd.conf --name collector -Dflume.root.logger=INFO,console >> /var/log/flume.log &
