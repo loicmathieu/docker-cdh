@@ -23,4 +23,12 @@
     <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
     <value>false</value>
   </property>
+  <property>
+    <name>dfs.namenode.name.dir</name>
+    <value>/hdfs/nm</value>
+  </property> 
+  <property>
+    <name>dfs.datanode.data.dir</name>
+    <value>/hdfs/data</value>
+  </property>  
 </configuration>
