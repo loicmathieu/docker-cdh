@@ -9,6 +9,7 @@ It's purpose is to be the base to make more specific CDH container, so don't use
 But if you really want to use it, OK, you can :
 ```
 docker pull loicmathieu/cloudera-cdh
-docker run -ti loicmathieu/cloudera-cdh bash
-echo $HADOOP_HOME
+docker run -ti loicmathieu/cloudera-cdh
 ```
+
+This should print out the version of CDH
