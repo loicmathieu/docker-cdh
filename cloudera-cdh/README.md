@@ -1,4 +1,4 @@
-# docker-cdh
+# loicmathieu/cloudera-cdh
 
 Base image with Cloudera CDH installed on it.
 

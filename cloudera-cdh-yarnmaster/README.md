@@ -1,4 +1,4 @@
-# cloudera-cdh-yarnmaster
+# loicmathieu/cloudera-cdh-yarnmaster
 A container running Cloudera CDH HDFS Namenode and SecondaryNamenode
 
 *Disclaimer : If you want a container shipped with all the Hadoop components in it, take a look at the cloudera/quickstart container. If you want to be able to run multiple container, each with a single hadoop role, use the loicmathieu.cloudera-cdh-<role> containers provided here*
