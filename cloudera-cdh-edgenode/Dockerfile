@@ -17,3 +17,5 @@ COPY cities.* /
 #copy flume conf and start scripts
 COPY flume/* /
 RUN chmod +x /start_flume.sh
+
+CMD ["bash"]
