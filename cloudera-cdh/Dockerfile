@@ -13,7 +13,7 @@ FROM loicmathieu/openjdk
 
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 
-ENV CDH_VER 5.9.0
+ENV CDH_VER 5.5.2
 
 #copy cloudera CDH repo
 COPY cloudera-cdh-${CDH_VER}.repo /etc/yum.repos.d
