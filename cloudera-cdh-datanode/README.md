@@ -1,4 +1,4 @@
-# cloudera-cdh-datanode
+# loicmathieu/cloudera-cdh-datanode
 
 A container running Cloudera Hadoop CDH HDFS Datanode and Yarn NodeManager
 

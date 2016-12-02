@@ -1,4 +1,4 @@
-# cloudera-cdh-edgenode
+# loicmathieu/cloudera-cdh-edgenode
 
 A container installed with Cloudera Hadoop CDH and aims to be a client for HDFS and Yarn/Mapreduce.
 
