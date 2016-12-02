@@ -13,8 +13,10 @@ FROM loicmathieu/openjdk
 
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 
+ENV CDH_VER 5.8.3
+
 #copy cloudera CDH repo
-COPY cloudera-cdh-5.8.3.repo /etc/yum.repos.d
+COPY cloudera-cdh-$CDH_VER.repo /etc/yum.repos.d
 
 #Install epel repo because supervisor isn't in the base repo
 RUN yum -y install epel-release && rm -rf /var/cache/yum/*
@@ -33,4 +35,4 @@ ENV HADOOP_HDFS_HOME /usr/lib/hadoop-hdfs
 ENV HADOOP_YARN_HOME /usr/lib/hadoop-yarn
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 
-CMD ["bash"]
+CMD ["hadoop", "version"]
