@@ -35,4 +35,4 @@ ENV HADOOP_HDFS_HOME /usr/lib/hadoop-hdfs
 ENV HADOOP_YARN_HOME /usr/lib/hadoop-yarn
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 
-CMD ["echo", "CDH_VER]
+CMD ["hadoop", "version]

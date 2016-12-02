@@ -12,4 +12,4 @@ docker pull loicmathieu/cloudera-cdh
 docker run -ti loicmathieu/cloudera-cdh
 ```
 
-This should print out the version of CDH
+This should print out the Hadoop version (hadoop version command will be launched)
