@@ -7,7 +7,7 @@
 #
 # The container will use supervisor to start both components.
 #######################################################################################################################
-FROM loicmathieu/cloudera-cdh:cdh-5.6.1
+FROM loicmathieu/cloudera-cdh:cdh-5.7.5
 
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 

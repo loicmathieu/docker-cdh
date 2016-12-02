@@ -1,10 +1,10 @@
 #########################################################################################
 # This dockerfile is derived from loicmathieu/cloudera-cdh and will setup an edge node to
 # works with the other cloudera containers.
-# It also contains some pif/hive script and CSV test files to start with
+# It also contains some pig/hive script and CSV test files to start with
 #
 #########################################################################################
-FROM loicmathieu/cloudera-cdh:cdh-5.6.1
+FROM loicmathieu/cloudera-cdh:cdh-5.7.5
 
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 

@@ -14,7 +14,7 @@ FROM loicmathieu/openjdk
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 
 #copy cloudera CDH repo
-COPY cloudera-cdh-5.6.1.repo /etc/yum.repos.d
+COPY cloudera-cdh-5.7.5.repo /etc/yum.repos.d
 
 #Install epel repo because supervisor isn't in the base repo
 RUN yum -y install epel-release && rm -rf /var/cache/yum/*
