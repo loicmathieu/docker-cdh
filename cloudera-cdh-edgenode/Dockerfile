@@ -18,4 +18,9 @@ COPY cities.* /
 COPY flume/* /
 RUN chmod +x /start_flume.sh
 
+#create a staging disk to send/get data to/from the clusrer
+RUN mkdir /staging
+
+VOLUME /staging
+
 CMD ["bash"]
