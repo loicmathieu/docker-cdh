@@ -42,8 +42,10 @@ docker run -ti --net hadoop --net-alias edgenode --link namenode --link yarnmast
 loicmathieu/cloudera-cdh-edgenode bash
 ```
 
+Optionnaly, you can mount the /staging volume to be able to easily send/get data to/from the cluster. It can facilitate putting stuff on HDFS or sending JAR files to Yarn.
+
 **Some example of how to run it :**
-The container include test data and scripts to test the cluster, here is a small snippet of whant can be done :
+The container include test data and scripts to test the cluster, here is a small snippet of what can be done :
 
 **HDFS & MapReduce :**
 ```
