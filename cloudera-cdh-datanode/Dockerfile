@@ -5,7 +5,7 @@
 # (using loicmathieu/cloudera-hdfs-namenode) and make sure the netword stack is OK so that the namenode and datanode
 # can communicate together
 #######################################################################################################################
-FROM loicmathieu/cloudera-cdh:cdh-5.9.0
+FROM loicmathieu/cloudera-cdh:cdh-5.10.2
 
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 
