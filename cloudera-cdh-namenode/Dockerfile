@@ -8,7 +8,7 @@
 #
 # The container will use supervisor to start both the namenode and the secondarynamenode.
 ###########################################################################################
-FROM loicmathieu/cloudera-cdh:cdh-5.10.2
+FROM loicmathieu/cloudera-cdh:cdh-5.11.2
 
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 
