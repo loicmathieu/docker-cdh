@@ -13,10 +13,10 @@ FROM loicmathieu/openjdk
 
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 
-ENV CDH_VER 5.9.0
+ENV CDH_VER 5.10.2
 
 #copy cloudera CDH repo
-COPY cloudera-cdh-${CDH_VER}.repo /etc/yum.repos.d
+COPY cloudera-cdh.repo /etc/yum.repos.d
 
 #Install epel repo because supervisor isn't in the base repo
 RUN yum -y install epel-release && rm -rf /var/cache/yum/*
