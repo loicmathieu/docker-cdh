@@ -4,7 +4,7 @@
 # It also contains some pig/hive script and CSV test files to start with
 #
 #########################################################################################
-FROM loicmathieu/cloudera-cdh:cdh-5.14.0
+FROM loicmathieu/cloudera-cdh:cdh-5.15.1
 
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 
