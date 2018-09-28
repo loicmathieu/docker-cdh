@@ -2,6 +2,8 @@
 
 A container running Cloudera Hadoop CDH HDFS Datanode and Yarn NodeManager
 
+**The tag latest is CDH 5.15 but CDH 6 is available via the tag cdh-6.0.0**
+
 *Disclaimer : If you want a container shipped with all the Hadoop components in it, take a look at the cloudera/quickstart container. If you want to be able to run multiple container, each with a single hadoop role, use the loicmathieu.cloudera-cdh-<role> containers provided here*
 
 This container is derived from loicmathieu/cloudera-cdh and will setup an HDFS datanode and a Yarn NodeManager.

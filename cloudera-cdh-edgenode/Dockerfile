@@ -4,12 +4,12 @@
 # It also contains some pig/hive script and CSV test files to start with
 #
 #########################################################################################
-FROM loicmathieu/cloudera-cdh:cdh-5.15.1
+FROM loicmathieu/cloudera-cdh:cdh-6.0.0
 
 MAINTAINER Loic Mathieu <loicmathieu@free.fr>
 
 #install pig, hive, flume and scoop 
-RUN yum -y install pig hive flume-ng sqoop2 spark-worker && rm -rf /var/cache/yum/*
+RUN yum -y install pig hive flume-ng sqoop spark-core && rm -rf /var/cache/yum/*
 
 #copy test data and script
 COPY cities.* /

@@ -2,6 +2,8 @@
 
 A container installed with Cloudera Hadoop CDH and aims to be a client for HDFS and Yarn/Mapreduce.
 
+**The tag latest is CDH 5.15 but CDH 6 is available via the tag cdh-6.0.0**
+
 This container is linked to the other loicmathieu/cloudera-cdh-* containers and aims to be the edge node so the entry point to send files, launch scripts and jobs, etc. to the cluster.
 
 This container contains the following Hadoop client : hdfs, yarn, mapreduce v2, pig, hive, spark, sqoop, flume.
@@ -105,5 +107,5 @@ Here, I forward the port 80 of the loicmathieu/apache-httpd-flume container to t
 hadoop fs -ls /user/root/collector
 ```
 
-**Sqoop2 :**  
-It's installed, use it with scoop2 from the shell ...
+**Sqoop :**  
+It's installed, use it with scoop from the shell ...
