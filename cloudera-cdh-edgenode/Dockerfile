@@ -18,6 +18,10 @@ COPY cities.* /
 COPY flume/* /
 RUN chmod +x /start_flume.sh
 
+#there is an issue with hive, we need to recrete the db
+RUN rm -rf /var/lib/hive/metastore/metastore_db
+RUN /usr/lib/hive/bin/schematool -dbType derby -initSchema
+
 #create a staging disk to send/get data to/from the clusrer
 RUN mkdir /staging
 
